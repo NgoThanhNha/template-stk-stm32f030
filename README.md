@@ -14,7 +14,7 @@ This commit will include the following contents:
 Optimizing memory when programming is very necessary. Controlling memory will help the program operate efficiently, helping to optimize costs when choosing a microcontroller.
 
 <div style="text-align: center;">
-    <img src="images/pool-memory.png" width="700"/>
+    <img src="images/pool-memory.png" width="730"/>
 </div>
 
 In this kernel, pool memory will be used to manage memory. 
@@ -32,7 +32,7 @@ void free_pure_msg(stk_msg_t* pure_msg_free);
 When calling the task post function, the kernel will proceed to send the contents of a message to the queue.
 
 <div style="text-align: center;">
-    <img src="images/task-post.png" width="670"/>
+    <img src="images/task-post.png" width="700"/>
 </div>
 
 ```sh
@@ -48,12 +48,12 @@ In which destination task id is the destination of the task to handle and signal
 The scheduler reads messages from the queue for processing according to the FIFO (“first in, first out”) principle.
 
 <div style="text-align: center;">
-    <img src="images/scheduling.png" width="670"/>
+    <img src="images/scheduling.png" width="700"/>
 </div>
 
 ### 3. Timer
 <div style="text-align: center;">
-    <img src="images/timer-service.png" width="650"/>
+    <img src="images/timer-service.png" width="670"/>
 </div>
 
 Timer is the service in event-driven programming model. In many contexts, tasks need to be performed periodically at certain intervals. Timer is very easy to use, can be called anywhere to periodically post signals (events) to tasks.
