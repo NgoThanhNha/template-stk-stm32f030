@@ -14,7 +14,7 @@ This commit will include the following contents:
 Optimizing memory when programming is very necessary. Controlling memory will help the program operate efficiently, helping to optimize costs when choosing a microcontroller.
 
 <div style="text-align: center;">
-    <img src="images/pool-memory.png" width="730"/>
+    <img src="images/pool-memory.png" width="750"/>
 </div>
 
 In this kernel, pool memory will be used to manage memory. 
@@ -53,7 +53,7 @@ The scheduler reads messages from the queue for processing according to the FIFO
 
 ### 3. Timer
 <div style="text-align: center;">
-    <img src="images/timer-service.png" width="670"/>
+    <img src="images/timer-service.png" width="650"/>
 </div>
 
 Timer is the service in event-driven programming model. In many contexts, tasks need to be performed periodically at certain intervals. Timer is very easy to use, can be called anywhere to periodically post signals (events) to tasks.
