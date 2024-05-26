@@ -32,7 +32,7 @@ void free_pure_msg(stk_msg_t* pure_msg_free);
 When calling the task post function, the kernel will proceed to send the contents of a message to the queue.
 
 <div style="text-align: center;">
-    <img src="images/task-post.png" width="700"/>
+    <img src="images/task-post.png" width="710"/>
 </div>
 
 ```sh
@@ -53,7 +53,7 @@ The scheduler reads messages from the queue for processing according to the FIFO
 
 ### 3. Timer
 <div style="text-align: center;">
-    <img src="images/timer-service.png" width="650"/>
+    <img src="images/timer-service.png" width="600"/>
 </div>
 
 Timer is the service in event-driven programming model. In many contexts, tasks need to be performed periodically at certain intervals. Timer is very easy to use, can be called anywhere to periodically post signals (events) to tasks.
