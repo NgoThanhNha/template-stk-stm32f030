@@ -53,7 +53,7 @@ The scheduler reads messages from the queue for processing according to the FIFO
 
 ### 3. Timer
 <div style="text-align: center;">
-    <img src="images/timer-service.png" width="430"/>
+    <img src="images/timer-service.png" width="500"/>
 </div>
 
 Timer is the service in event-driven programming model. In many contexts, tasks need to be performed periodically at certain intervals. Timer is very easy to use, can be called anywhere to periodically post signals (events) to tasks.
