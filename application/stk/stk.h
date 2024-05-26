@@ -38,9 +38,13 @@ typedef struct {
     pf_task task_handler;
 } task_t;
 
+/* post message to tasks */
 extern void task_post(task_id_t task_id, stk_msg_t* msg);
+
+/* post pure message - the message only contain signal */
 extern void task_post_pure_msg(task_id_t des_task_id, uint8_t signal);
 
+/* task functions */
 extern void task_create(task_t* task_table_create);
 extern void task_scheduler();
 extern void task_run();
