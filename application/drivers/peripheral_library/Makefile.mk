@@ -1,0 +1,2 @@
+include drivers/peripheral_library/CMSIS/Makefile.mk
+include drivers/peripheral_library/STM32F0xx_StdPeriph_Driver/Makefile.mk
