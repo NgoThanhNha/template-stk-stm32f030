@@ -126,7 +126,7 @@ $(OBJECTS_DIR)/%.o: %.s
 	@$(AS) $(CFLAGS) -o $@ $<
 
 flash: all
-	$(PROGRAMER_PATH)/STM32_Programmer.sh -c port=SWD -w $(TARGET_BIN) $(APP_START_ADDR_VAL) -rst
+	$(PROGRAMER_PATH)/STM32_Programmer.sh -c port=SWD -w $(TARGET:.axf=.bin) $(APP_START_ADDR_VAL) -rst
 
 clean:
 	$(Print) CLEAN $(OBJECTS_DIR) folder
