@@ -18,7 +18,8 @@
 #include "console.h"
 #include "hard_timer.h"
 
-#include "task_polling.h"
+#include "app.h"
+#include "task_list.h"
 
 void nmi_handler() {
 	FATAL("SYSTEM", 0x01);
@@ -135,7 +136,7 @@ void spi1_irq_handler() {
 void system_tick_handler() {
 	timer_tick(1);
 	system_tick_delay_counter++;
-	task_polling_handler();
+	systick_irq_timer_1ms();
 }
 
 void usart1_irq_handler() {

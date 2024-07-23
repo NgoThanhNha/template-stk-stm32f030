@@ -1,7 +1,7 @@
 /**
  ******************************************************************************
  * @author: Nark
- * @date:   02/05/2024
+ * @date:   23/07/2024
  ******************************************************************************
 **/
 
@@ -14,16 +14,20 @@
 
 #include <stdio.h>
 
-extern void main_app();
-
 /*---------------------------------------------------------------------------*/
 /*                            APP DEFINE SIGNALS                             */
 /*---------------------------------------------------------------------------*/
-enum {
-    SIG_TESTING_1,
-    SIG_TESTING_2,
-    SIG_TESTING_3,
+enum app_signals {
+    AC_DBG_1,
+    AC_DBG_2,
+    AC_DBG_3,
 };
+
+/* main application */
+extern int main_app();
+
+/* polling with system tick */
+extern void systick_irq_timer_1ms();
 
 #ifdef __cplusplus
 }

@@ -5,8 +5,8 @@
  ******************************************************************************
 **/
 
-#ifndef __TASK_TEMPLATE_1_H__
-#define __TASK_TEMPLATE_1_H__
+#ifndef __TASK_DBG_H__
+#define __TASK_DBG_H__
 
 #ifdef __cplusplus
  extern "C" {
@@ -17,10 +17,10 @@
 
 #include "message.h"
 
-extern void task_template_1(stk_msg_t* msg);
+extern void task_dbg_handler(stk_msg_t* msg);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __TASK_TEMPLATE_1_H__ */
+#endif /* __TASK_DBG_H__ */

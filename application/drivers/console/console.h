@@ -17,24 +17,18 @@
 #include "io_cfg.h"
 #include "xprintf.h"
 
-#define DBG_EN          (1)
+// #define CONSOLE_DBG_EN
 
-#define APP_PRINT(fmt, ...)             xprintf("[PRINT] " fmt, ##__VA_ARGS__)
-#define SYS_PRINT(fmt, ...)             xprintf((const char*)fmt, ##__VA_ARGS__)
-
-#if DBG_EN
-
-#define SYS_DBG(fmt, ...)               xprintf((const char*)fmt, ##__VA_ARGS__)
-#define APP_DBG(fmt, ...)               xprintf("[DBG] " fmt, ##__VA_ARGS__)
-#define APP_DBG_SIG(fmt, ...)           xprintf("-SIG-> " fmt, ##__VA_ARGS__)
-#define FORWARD_MSG_TO_PC(fmt, ...)     xprintf((const char*)fmt, ##__VA_ARGS__)
-
+#if defined (CONSOLE_DBG_EN)
+    #define APP_PRINT(fmt, ...)         xprintf("[APP] " fmt, ##__VA_ARGS__)
+    #define SYS_PRINT(fmt, ...)         xprintf((const char*)fmt, ##__VA_ARGS__)
+    #define APP_DBG(fmt, ...)           xprintf("[DBG] " fmt, ##__VA_ARGS__)
+    #define APP_DBG_SIG(fmt, ...)       xprintf("-SIG-> " fmt, ##__VA_ARGS__)
 #else
-         
-#define SYS_DBG(fmt, ...)          
-#define APP_DBG(fmt, ...)         
-#define APP_DBG_SIG(fmt, ...)  
-
+    #define APP_PRINT(fmt, ...)    
+    #define SYS_PRINT(fmt, ...)            
+    #define APP_DBG(fmt, ...)         
+    #define APP_DBG_SIG(fmt, ...)  
 #endif
 
 extern void console_init();

@@ -20,7 +20,7 @@
 
 #include "message.h"
 
-#define STK_VERSION                 "1.1"
+#define STK_VERSION                 "1.2"
 
 #define STK_DISABLE                 (0x00)
 #define STK_ENABLE                  (0x01)
@@ -46,8 +46,7 @@ extern void task_post_pure_msg(task_id_t des_task_id, uint8_t signal);
 
 /* task functions */
 extern void task_create(task_t* task_table_create);
-extern void task_scheduler();
-extern void task_run();
+extern int task_run();
 
 #ifdef __cplusplus
 }

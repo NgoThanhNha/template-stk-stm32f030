@@ -20,7 +20,10 @@ enum {
     TASK_TIMER_TICK_ID,
 
     /* APP TASKS */
-    TASK_TEMPLATE_1_ID,
+    TASK_DBG_ID,
+
+    /* END OF TABLE */
+    STK_TASK_EOT_ID,
 };
 
 extern task_t app_task_table[];

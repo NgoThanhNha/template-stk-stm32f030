@@ -10,6 +10,7 @@
 
 #include "platform.h"
 #include "console.h"
+#include "task_list.h"
 
 static task_t* task_table = (task_t*)0;
 static uint8_t size_of_task_list = 0;
@@ -21,7 +22,7 @@ void task_create(task_t* task_table_create) {
     task_table = task_table_create;
     size_of_task_list = 0;
 
-    while (task_table[size_of_task_list].task_handler != NULL) {
+    while (task_table[size_of_task_list].task_id != STK_TASK_EOT_ID) {
         size_of_task_list++;
     }
     
@@ -29,7 +30,7 @@ void task_create(task_t* task_table_create) {
     event_signal.qtail = STK_MSG_NULL;
 
     SYS_PRINT("Welcome to my application!\n");
-    SYS_PRINT("Application tasks created: %d\n", size_of_task_list);
+    SYS_PRINT("Application created tasks: %d\n", size_of_task_list);
     SYS_PRINT("\n");
     SYS_PRINT("\n");
 }
@@ -66,7 +67,7 @@ void task_post_pure_msg(task_id_t des_task_id, uint8_t signal) {
 }
 
 void task_scheduler() {
-    if (event_signal.qhead != STK_MSG_NULL) {
+    while (event_signal.qhead != STK_MSG_NULL) {
 
         ENTRY_CRITICAL();
 
@@ -90,7 +91,7 @@ void task_scheduler() {
     }
 }
 
-void task_run() {
+int task_run() {
     for (;;) {
         task_scheduler();
     }
