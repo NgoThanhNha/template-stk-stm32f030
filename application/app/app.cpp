@@ -37,11 +37,9 @@ int main_app() {
     /******************************************************************************
     * init kernel
     *******************************************************************************/
-    ENTRY_CRITICAL();
     msg_init();
     task_create((task_t*)&app_task_table);
     timer_init();
-    EXIT_CRITICAL();
 
     /******************************************************************************
     * app task initial
@@ -60,18 +58,18 @@ int main_app() {
 }
 
 /*****************************************************************************/
-/* app initial function. 
+/* app initial function 
  */
 /*****************************************************************************/
 
 /* send the first message to tasks */
 void app_task_init() {
-
+    task_post_pure_msg(TASK_DBG_ID, AC_DBG_2);
 }
 
 /* start software timer for application */
 void app_start_timer() {
-
+    timer_set(TASK_DBG_ID, AC_DBG_1, 3000, TIMER_PERIODIC);
 }
 
 /*****************************************************************************/

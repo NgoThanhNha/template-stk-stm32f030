@@ -17,7 +17,7 @@
 #include "io_cfg.h"
 #include "xprintf.h"
 
-// #define CONSOLE_DBG_EN
+#define CONSOLE_DBG_EN
 
 #if defined (CONSOLE_DBG_EN)
     #define APP_PRINT(fmt, ...)         xprintf("[APP] " fmt, ##__VA_ARGS__)
