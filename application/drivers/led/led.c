@@ -10,12 +10,13 @@
 
 led_t led_life;
 
-void led_init_func(led_t* led, pf_led_ctrl pf_led_on, pf_led_ctrl pf_led_off) {
+void led_init_func(led_t* led, pf_led_ctrl pf_led_on, pf_led_ctrl pf_led_off, uint8_t unit_increase) {
 
     led->blink_enable = LED_BLINK_DISABLE;
     led->status = LED_OFF;
     led->blink_duration = 0;
     led->poll_counter = 0;
+    led->unit_increase = unit_increase; /* depend on interrupt period for led polling */
 
     /* assign the pointer function to led driver */
     led->pf_led_on = pf_led_on;
@@ -67,7 +68,7 @@ void led_polling(led_t* led) {
             }
         }
         else {
-            led->poll_counter++;
+            led->poll_counter += led->unit_increase;
         }
     }
 }

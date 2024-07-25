@@ -8,3 +8,5 @@ SOURCES_CPP += ./app/app.cpp
 SOURCES_CPP += ./app/task_list.cpp
 
 SOURCES_CPP += ./app/task_dbg.cpp
+SOURCES_CPP += ./app/task_shell.cpp
+SOURCES_CPP += ./app/shell.cpp

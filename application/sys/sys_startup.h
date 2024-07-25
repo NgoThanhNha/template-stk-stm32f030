@@ -5,8 +5,8 @@
  ******************************************************************************
 **/
 
-#ifndef __STK_STARTUP_H__
-#define __STK_STARTUP_H__
+#ifndef __SYS_STARTUP_H__
+#define __SYS_STARTUP_H__
 
 #ifdef __cplusplus
  extern "C" {
@@ -19,4 +19,4 @@
 }
 #endif
 
-#endif /* __STK_STARTUP_H__ */
+#endif /* __SYS_STARTUP_H__ */

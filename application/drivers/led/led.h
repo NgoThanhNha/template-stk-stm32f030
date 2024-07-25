@@ -26,6 +26,7 @@ typedef struct {
     uint8_t blink_enable;
     uint8_t status;
     uint16_t blink_duration;
+    uint8_t unit_increase;
 
     /* led control functions */
     pf_led_ctrl pf_led_on;
@@ -38,7 +39,7 @@ typedef struct {
 extern led_t led_life;
 
 /* led functions */
-extern void led_init_func(led_t* led, pf_led_ctrl pf_led_on, pf_led_ctrl pf_led_off);  
+extern void led_init_func(led_t* led, pf_led_ctrl pf_led_on, pf_led_ctrl pf_led_off, uint8_t unit_increase); 
 extern void led_set_static_on(led_t* led, uint8_t color);
 extern void led_blink_set(led_t* led, uint16_t duration);
 extern void led_blink_reset(led_t* led);

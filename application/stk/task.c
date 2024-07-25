@@ -5,39 +5,45 @@
  ******************************************************************************
 **/
 
-#include "stk.h"
+#include "task.h"
 #include "message.h"
 
+#include "sys_cfg.h"
 #include "platform.h"
-#include "console.h"
+
+#include "app_dbg.h"
 #include "task_list.h"
+#include "task_shell.h"
 
+/* stk tasks */
 static task_t* task_table = (task_t*)0;
-static uint8_t size_of_task_list = 0;
+static uint8_t task_table_size = 0;
 
+/* polling task */
+static task_polling_t* task_polling_table = (task_polling_t*)0;
+static uint8_t task_polling_table_size = 0;
+
+/* event mail box */
 static signal_queue_t event_signal;
 
 void task_create(task_t* task_table_create) {
 
     task_table = task_table_create;
-    size_of_task_list = 0;
+    task_table_size = 0;
 
-    while (task_table[size_of_task_list].task_id != STK_TASK_EOT_ID) {
-        size_of_task_list++;
+    while (task_table[task_table_size].task_id != STK_TASK_EOT_ID) {
+        task_table_size++;
     }
     
     event_signal.qhead = STK_MSG_NULL;
     event_signal.qtail = STK_MSG_NULL;
 
-    SYS_PRINT("Welcome to my application!\n");
-    SYS_PRINT("Application tasks: %d\n", size_of_task_list);
-    SYS_PRINT("\n");
-    SYS_PRINT("\n");
+    SYS_PRINT("[num] stk tasks: %d\n", task_table_size);
 }
 
 void task_post(task_id_t task_id, stk_msg_t* msg) {
-    if (task_id >= size_of_task_list) {
-        FATAL("TASK_POST", 0x01);
+    if (task_id >= task_table_size) {
+        FATAL("TASK", 0x01);
     }
     else {
         ENTRY_CRITICAL();
@@ -91,8 +97,68 @@ void task_scheduler() {
     }
 }
 
+void task_polling_create(task_polling_t* task_polling_table_create) {
+	uint8_t index = 0;
+	if (task_polling_table_create) {
+		task_polling_table = task_polling_table_create;
+		while (task_polling_table_create[index].id != STK_TASK_POLLING_EOT_ID) {
+			index++;
+		}
+		task_polling_table_size = index;
+        SYS_PRINT("[num] polling tasks: %d\n", task_polling_table_size);
+        SYS_PRINT("\n");
+        SYS_PRINT("\n");
+	}
+	else {
+		FATAL("TASK", 0x02);
+	}
+}
+
+void task_polling_run() {
+	task_polling_t* __task_polling_table = task_polling_table;
+
+	while (__task_polling_table->id < STK_TASK_POLLING_EOT_ID) {
+
+		ENTRY_CRITICAL();
+		if (__task_polling_table->ability == STK_ENABLE) {
+
+			EXIT_CRITICAL();
+			__task_polling_table->task_polling_handler();
+		}
+		else {
+			EXIT_CRITICAL();
+		}
+		__task_polling_table++;
+	}
+}
+
+void task_polling_set_ability(task_id_t task_polling_id, uint8_t ability) {
+	task_polling_t* __task_polling_table = task_polling_table;
+
+	while (__task_polling_table->id < STK_TASK_POLLING_EOT_ID) {
+
+		if (__task_polling_table->id == task_polling_id) {
+
+			ENTRY_CRITICAL();
+
+			__task_polling_table->ability = ability;
+
+			EXIT_CRITICAL();
+
+			break;
+		}
+
+		__task_polling_table++;
+	}
+
+	if (__task_polling_table->id == STK_TASK_POLLING_EOT_ID) {
+		FATAL("TASK", 0x03);
+	}
+}
+
 int task_run() {
     for (;;) {
         task_scheduler();
+        task_polling_run();
     }
 }

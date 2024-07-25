@@ -28,7 +28,6 @@
 
 extern void enable_interrupts();
 extern void disable_interrupts();
-extern void sys_ctrl_delay_ms(volatile uint32_t count);
 extern void fatal_error(const char* fatal_info, uint8_t fatal_id);
 
 #ifdef __cplusplus

@@ -4,6 +4,6 @@ CPPFLAGS += -I./stk
 VPATH += ./stk
 
 # C source files
-SOURCES += ./stk/stk.c
+SOURCES += ./stk/task.c
 SOURCES += ./stk/message.c
 SOURCES += ./stk/timer.c

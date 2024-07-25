@@ -11,8 +11,10 @@
 #include "core_cm0.h"
 #include "core_cmFunc.h"
 
-#include "console.h"
+#include "app_dbg.h"
 #include "io_cfg.h"
+
+#include "sys_cfg.h"
 
 void enable_interrupts() {
 	__enable_irq();
@@ -20,26 +22,6 @@ void enable_interrupts() {
 
 void disable_interrupts() {
 	__disable_irq();
-}
-
-void sys_ctrl_delay_ms(volatile uint32_t count) {
-    __IO uint32_t currentTicks = SysTick->VAL;
-
-    /* number of ticks per millisecond */
-    const uint32_t tickPerMs = SysTick->LOAD + 1;
-
-    /* number of ticks to count */
-    const uint32_t nbTicks = ((count - ((count > 0) ? 1 : 0)) * tickPerMs);
-
-    /* number of elapsed ticks */
-    uint32_t elapsedTicks = 0;
-    __IO uint32_t oldTicks = currentTicks;
-    do {
-        currentTicks = SysTick->VAL;
-        elapsedTicks += (oldTicks < currentTicks) ? tickPerMs + oldTicks - currentTicks :
-                                                    oldTicks - currentTicks;
-        oldTicks = currentTicks;
-    } while (nbTicks > elapsedTicks);
 }
 
 void fatal_error(const char* fatal_info, uint8_t fatal_id) {

@@ -1,11 +1,11 @@
 /**
  ******************************************************************************
  * @author: Nark
- * @date:   02/05/2024
+ * @date:   25/07/2024
  ******************************************************************************
 **/
 
-#include "stk.h"
+#include "task.h"
 #include "message.h"
 #include "timer.h"
 
@@ -14,32 +14,29 @@
 #include "app.h"
 #include "io_cfg.h"
 
-#include "hard_timer.h"
-#include "console.h"
+#include "app_dbg.h"
+#include "ring_buffer.h"
 #include "led.h"
 
 #include "task_list.h"
+#include "task_dbg.h"
+#include "task_shell.h"
+#include "shell.h"
 
 static void app_start_timer();
 static void app_task_init();
 
 int main_app() {
-    /* system tick init */
-    systick_init();
-
-    /* io init */
-    io_init();    
-
-    /* led init */
-    led_init_func(&led_life, led_life_on, led_life_off);
-    led_blink_set(&led_life, 1000);
-
     /******************************************************************************
     * init kernel
     *******************************************************************************/
     msg_init();
     task_create((task_t*)&app_task_table);
+    task_polling_create((task_polling_t*)&app_task_polling_table);
     timer_init();
+
+    /* ring buffer init */
+    ring_buffer_char_init(&ring_buffer_console_rev, buffer_console_rev, BUFFER_CONSOLE_REV_SIZE);
 
     /******************************************************************************
     * app task initial
@@ -69,7 +66,7 @@ void app_task_init() {
 
 /* start software timer for application */
 void app_start_timer() {
-    timer_set(TASK_DBG_ID, AC_DBG_1, 3000, TIMER_PERIODIC);
+
 }
 
 /*****************************************************************************/
@@ -77,9 +74,9 @@ void app_start_timer() {
  */
 /*****************************************************************************/
 
-/* hardware timer interrupt 1ms
+/* hardware timer interrupt 10ms
  * used for led, button polling
  */
-void systick_irq_timer_1ms() {
+void sys_irq_timer_10ms() {
     led_polling(&led_life);
 }

@@ -448,7 +448,7 @@ __attribute__( ( always_inline ) ) __STATIC_INLINE void __set_PSP(uint32_t topOf
 
     \return               MSP Register value
  */
-__attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_MSP(void)
+__attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t  __get_MSP(void)
 {
   register uint32_t result;
 

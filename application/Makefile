@@ -90,7 +90,7 @@ CPPFLAGS += $(CPU)			\
 		$(GENERAL_FLAGS)	\
 
 # linker file
-LDFILE = sys/startup/stk.ld
+LDFILE = sys/stk.ld
 
 # linker flags
 LDFLAGS	=	-Map=$(OBJECTS_DIR)/$(PROJECT).map	\

@@ -5,11 +5,11 @@
  ******************************************************************************
 **/
 
-#include "stk.h"
+#include "task.h"
 #include "message.h"
 
 #include "platform.h"
-#include "console.h"
+#include "app_dbg.h"
 
 static stk_pure_msg_t msg_pure_pool[STK_PURE_MSG_POOL_SIZE];
 static stk_msg_t* free_list_pure_msg_pool;
@@ -52,7 +52,7 @@ stk_msg_t* get_pure_msg() {
     message_allocated = free_list_pure_msg_pool;
 
     if (message_allocated == STK_MSG_NULL) {
-        FATAL("PURE_MSG", 0x01);
+        FATAL("MSG", 0x01);
     }
     else {
         /* move the free_msg_list to new position */

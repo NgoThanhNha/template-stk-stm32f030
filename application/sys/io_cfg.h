@@ -29,7 +29,6 @@
 #define USART1_CLOCK                    (RCC_APB2Periph_USART1)
 #define USART1_TX_PIN                   (GPIO_Pin_2)
 #define USART1_RX_PIN                   (GPIO_Pin_3)
-#define CONSOLE_SPEED                   (115200)
 
 /* led life functions */
 extern void led_life_on();

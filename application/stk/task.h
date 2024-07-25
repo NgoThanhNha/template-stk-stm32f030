@@ -8,8 +8,8 @@
  ***********************************************************************************************************************
 **/
 
-#ifndef __STK_H__
-#define __STK_H__
+#ifndef __TASK_H__
+#define __TASK_H__
 
 #ifdef __cplusplus
  extern "C" {
@@ -25,8 +25,9 @@
 #define STK_DISABLE                 (0x00)
 #define STK_ENABLE                  (0x01)
 
-typedef void (*pf_task)(stk_msg_t*);
 typedef uint8_t task_id_t;
+typedef void (*pf_task)(stk_msg_t*);
+typedef void (*pf_task_polling)();
 
 typedef struct {
 	stk_msg_t* qhead;
@@ -38,18 +39,27 @@ typedef struct {
     pf_task task_handler;
 } task_t;
 
-/* post message to tasks */
-extern void task_post(task_id_t task_id, stk_msg_t* msg);
+typedef struct {
+	task_id_t id;
+	uint8_t ability;
+	pf_task_polling task_polling_handler;
+} task_polling_t;
 
-/* post pure message - the message only contain signal */
+/* stk task functions */
+extern void task_create(task_t* task_table_create);
+extern void task_post(task_id_t task_id, stk_msg_t* msg);
 extern void task_post_pure_msg(task_id_t des_task_id, uint8_t signal);
 
-/* task functions */
-extern void task_create(task_t* task_table_create);
+/* task polling functions */
+extern void task_polling_create(task_polling_t* task_polling_table_create);
+extern void task_polling_run();
+extern void task_polling_set_ability(task_id_t task_polling_id, uint8_t ability);
+
+/* kernel start */
 extern int task_run();
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __STK_H__ */
+#endif /* __TASK_H__ */
