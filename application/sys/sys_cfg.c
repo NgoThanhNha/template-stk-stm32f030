@@ -114,7 +114,7 @@ void sys_ctrl_show_info() {
 	SYS_PRINT("\\__ \\  )(  (   (	Flash used:           %d\n", system_info.flash_used);
 	SYS_PRINT("(___/ (__) (_)\\_)	Data initialized:     %d\n", system_info.data_init_size);
 	SYS_PRINT("			Data non initialized: %d\n", system_info.data_non_init_size);
-    SYS_PRINT("Kernel version: %s	Stack available:      %d\n", STK_VERSION, system_info.stack_avail);
+	SYS_PRINT("Kernel version: %s	Stack available:      %d\n", STK_VERSION, system_info.stack_avail);
 	SYS_PRINT("			Heap available:       %d\n", system_info.heap_avail);
 	SYS_PRINT("\n");
 	SYS_PRINT("-> Application start\n");
