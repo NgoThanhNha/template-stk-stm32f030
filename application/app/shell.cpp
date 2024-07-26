@@ -24,7 +24,6 @@ cmd_line_t shell_table[] {
 	{(const int8_t*)"dbg",          shell_dbg,          (const uint8_t*)"shell debug"},
     {(const int8_t*)"help",		    shell_help,			(const uint8_t*)"help info"},
 
-
     /****************************************************************************************/
     /* END OF TABLE */
     /****************************************************************************************/

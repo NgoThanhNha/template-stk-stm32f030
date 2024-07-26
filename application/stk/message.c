@@ -16,7 +16,6 @@ static stk_msg_t* free_list_pure_msg_pool;
 static uint32_t free_list_pure_used;
 
 static void pure_msg_init();
-void msg_init();
 
 void msg_init() {
     pure_msg_init();

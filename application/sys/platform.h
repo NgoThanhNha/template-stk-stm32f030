@@ -15,15 +15,16 @@
 #include <stdio.h>
 #include <stdint.h>
 
+#include "sys_cfg.h"
+
 #define ENTRY_CRITICAL()            disable_interrupts()
 #define EXIT_CRITICAL()             enable_interrupts()
 
-#if RELEASE_EN
-#define FATAL(str, id)
+#if defined (RELEASE_EN)
+    #define FATAL(str, id)          sys_ctrl_reset
 
 #else
-#define FATAL(str, id) fatal_error(str, id)
-
+    #define FATAL(str, id)          fatal_error(str, id)
 #endif
 
 extern void enable_interrupts();

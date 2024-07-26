@@ -109,10 +109,10 @@ void sys_ctrl_show_info() {
 	SYS_PRINT("\n");
 	SYS_PRINT("\n");
 	SYS_PRINT("\n");
-    SYS_PRINT(" ___  ____  _  _ 	CPU clock:            %d Hz\n", system_info.cpu_clock);
-    SYS_PRINT("/ __)(_  _)( )/ )	Console baudrate:     %d bps\n", system_info.console_baudrate);
-    SYS_PRINT("\\__ \\  )(  (   (	Flash used:           %d\n", system_info.flash_used);
-    SYS_PRINT("(___/ (__) (_)\\_)	Data initialized:     %d\n", system_info.data_init_size);
+	SYS_PRINT(" ___  ____  _  _ 	CPU clock:            %d Hz\n", system_info.cpu_clock);
+	SYS_PRINT("/ __)(_  _)( )/ )	Console baudrate:     %d bps\n", system_info.console_baudrate);
+	SYS_PRINT("\\__ \\  )(  (   (	Flash used:           %d\n", system_info.flash_used);
+	SYS_PRINT("(___/ (__) (_)\\_)	Data initialized:     %d\n", system_info.data_init_size);
 	SYS_PRINT("			Data non initialized: %d\n", system_info.data_non_init_size);
     SYS_PRINT("Kernel version: %s	Stack available:      %d\n", STK_VERSION, system_info.stack_avail);
 	SYS_PRINT("			Heap available:       %d\n", system_info.heap_avail);
