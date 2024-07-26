@@ -22,12 +22,8 @@
 extern uint8_t buffer_console_rev[BUFFER_CONSOLE_REV_SIZE];
 extern ring_buffer_char_t ring_buffer_console_rev;
 
-/* get char from uart isr */
 extern void sys_irq_shell();
-
-/* console polling */
 extern void task_polling_console();
-
 extern void task_shell_handler(stk_msg_t* msg);
 
 #ifdef __cplusplus

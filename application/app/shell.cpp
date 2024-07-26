@@ -21,13 +21,13 @@ cmd_line_t shell_table[] {
     /****************************************************************************************/
     /* DEBUG COMMAND */
     /****************************************************************************************/
-	{(const int8_t*)"dbg",          shell_dbg,          (const uint8_t*)"shell debug"},
+    {(const int8_t*)"dbg",          shell_dbg,          (const uint8_t*)"shell debug"},
     {(const int8_t*)"help",		    shell_help,			(const uint8_t*)"help info"},
 
     /****************************************************************************************/
     /* END OF TABLE */
     /****************************************************************************************/
-	{(const int8_t*)0,              (pf_cmd_func)0,     (const uint8_t*)0}      
+    {(const int8_t*)0,              (pf_cmd_func)0,     (const uint8_t*)0}      
 };
 
 int32_t shell_dbg(uint8_t* argv) {
