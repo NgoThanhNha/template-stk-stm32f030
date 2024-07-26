@@ -90,57 +90,57 @@ void reset_handler(void) {
     main_app();
 }
 
-/* PY32F030xx cortex-M0+ processor exception vector table */
+/* STM32F030 cortex-M0 processor exception vector table */
 __attribute__((section(".isr_vector"))) void (*const g_pfnVectors[])(void) = {
     /* system interrupt */
-    (void (*)(void))&_estack,                       // Stack pointer
-    reset_handler,                                  // Reset Handler
-    nmi_handler,                                    // NMI Handler
-    hardfault_handler,                              // Hard Fault Handler
-    mem_manage_handler,                             // MemManage Handler
-    bus_fault_handler,                              // BusFault Handler
-    usage_fault_handler,                            // UsageFault Handler
-    0,                                              // Reserved
-    0,                                              // Reserved
-    0,                                              // Reserved
-    0,                                              // Reserved
-    svc_handler,                                    // SVCall Handler
-    0,                                              // Debug Monitor Handler
-    0,                                              // Reserved
-    pendsv_handler,                                 // PendSV Handler
-    system_tick_handler,                            // SysTick Handler
+    (void (*)(void))&_estack,                       /* Stack pointer */
+    reset_handler,                                  /* Reset Handler */
+    nmi_handler,                                    /* NMI Handler */
+    hardfault_handler,                              /* Hard Fault Handler */
+    mem_manage_handler,                             /* MemManage Handler */
+    bus_fault_handler,                              /* BusFault Handler */
+    usage_fault_handler,                            /* UsageFault Handler */
+    0,                                              /* Reserved */
+    0,                                              /* Reserved */
+    0,                                              /* Reserved */
+    0,                                              /* Reserved */
+    svc_handler,                                    /* SVCall Handler */
+    0,                                              /* Debug Monitor Handler */
+    0,                                              /* Reserved */
+    pendsv_handler,                                 /* PendSV Handler */
+    system_tick_handler,                            /* SysTick Handler */
 
     /* external interrupt */
-    default_handler,                                // Window WatchDog
-    0,                                              // Reserved 
-    default_handler,                                // RTC through EXTI Line
-    default_handler,                                // FLASH
-    default_handler,                                // RCC
-    default_handler,                                // EXTI Line 0 and 1
-    default_handler,                                // EXTI Line 2 and 3 
-    default_handler,
-    0,                                              // EXTI Line 4 to 15
-    default_handler,                                // DMA1 Channel 1
-    default_handler,                                // DMA1 Channel 2 and Channel 3
-    default_handler,                                // DMA1 Channel 4 and Channel 5
-    default_handler,                                // ADC
-    default_handler,                                // TIM1 Break, Update, Trigger and Commutation
-    default_handler,                                // TIM1 Capture Compare
-    0,                                              // Reserved
-    default_handler,                                // TIM3
-    0,                                              // Reserved
-    0,                                              // Reserved
-    default_handler,                                // TIM14
-    0,                                              // Reserved
-    default_handler,                                // TIM16
-    default_handler,                                // TIM17
-    default_handler,                                // I2C1
-    0,                                              // Reserved
-    default_handler,                                // SPI1
-    0,                                              // Reserved
-    usart1_irq_handler,                             // USART1
-    0,                                              // Reserved
-    0,                                              // Reserved
-    0,                                              // Reserved
-    0,                                              // Reserved
+    default_handler,                                /* Window WatchDog */
+    0,                                              /* Reserved */
+    default_handler,                                /* RTC through EXTI Line */
+    default_handler,                                /* FLASH */
+    default_handler,                                /* RCC */
+    default_handler,                                /* EXTI Line 0 and 1 */
+    default_handler,                                /* EXTI Line 2 and 3 */
+    default_handler,                                /* Reserved */
+    0,                                              /* EXTI Line 4 to 15 */
+    default_handler,                                /* DMA1 Channel 1 */
+    default_handler,                                /* DMA1 Channel 2 and Channel 3 */
+    default_handler,                                /* DMA1 Channel 4 and Channel 5 */
+    default_handler,                                /* ADC */
+    default_handler,                                /* TIM1 Break, Update, Trigger and Commutation */
+    default_handler,                                /* TIM1 Capture Compare */
+    0,                                              /* Reserved */
+    default_handler,                                /* TIM3 */
+    0,                                              /* Reserved */
+    0,                                              /* Reserved */
+    default_handler,                                /* TIM14 */
+    0,                                              /* Reserved */
+    default_handler,                                /* TIM16 */
+    default_handler,                                /* TIM17 */
+    default_handler,                                /* I2C1 */
+    0,                                              /* Reserved */
+    default_handler,                                /* SPI1 */
+    0,                                              /* Reserved */
+    usart1_irq_handler,                             /* USART1 */
+    0,                                              /* Reserved */
+    0,                                              /* Reserved */
+    0,                                              /* Reserved */
+    0,                                              /* Reserved */
 };
