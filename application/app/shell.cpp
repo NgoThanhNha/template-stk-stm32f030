@@ -60,12 +60,12 @@ int32_t shell_help(uint8_t* argv) {
 	uint32_t index = 0;
 	switch (*(argv + 4)) {
 	default:
-		SHELL_LOG("\nCOMMANDS INFORMATION:\n\n");
-		while(shell_table[index].cmd != (const int8_t*)0) {
-			SHELL_LOG("%s\t-> %s\n\n", shell_table[index].cmd, shell_table[index].info);
-			index++;
-		}
-		break;
+        SHELL_LOG("\nCOMMANDS INFORMATION:\n\n");
+        while(shell_table[index].cmd != (const int8_t*)0) {
+            SHELL_LOG("%s\t-> %s\n\n", shell_table[index].cmd, shell_table[index].info);
+            index++;
+        }
+        break;
 	}
 	return 0;
 }

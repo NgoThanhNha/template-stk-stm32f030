@@ -24,13 +24,13 @@ uint8_t shell_data_parser[SHELL_BUFFER_LENGTH];
 volatile shell_t shell;
 
 void sys_irq_shell() {
-	volatile uint8_t c = 0;
+    volatile uint8_t c = 0;
 
-	c = usart1_get_char();
+    c = usart1_get_char();
 
-	ENTRY_CRITICAL();
-	ring_buffer_char_put(&ring_buffer_console_rev, c);
-	EXIT_CRITICAL();
+    ENTRY_CRITICAL();
+    ring_buffer_char_put(&ring_buffer_console_rev, c);
+    EXIT_CRITICAL();
 }
 
 void task_shell_handler(stk_msg_t* msg) {
