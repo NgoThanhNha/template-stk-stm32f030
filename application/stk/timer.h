@@ -34,13 +34,13 @@ typedef enum {
 } timer_type_t;
 
 typedef struct stk_timer_t {
-	struct stk_timer_t*	next;			/* manage timer message */
+	struct stk_timer_t*		next;			/* manage timer message */
 
-	task_id_t			des_task_id;	/* destination task id */
-	timer_sig_t			sig;			/* signal for application */
+	task_id_t				des_task_id;	/* destination task id */
+	timer_sig_t				sig;			/* signal for application */
 
-	uint32_t			counter;		/* decrease each timer system tick */
-	uint32_t			period;			/* case one-shot timer, this field is equa 0 */
+	uint32_t				counter;		/* decrease each timer system tick */
+	uint32_t				period;			/* case one-shot timer, this field is equa 0 */
 } stk_timer_t;
 
 extern void timer_init();
