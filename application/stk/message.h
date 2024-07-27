@@ -16,7 +16,7 @@
 #include <stdint.h>
 
 #define STK_PURE_MSG_POOL_SIZE          (16)
-#define STK_MSG_NULL 					((stk_msg_t*)0)
+#define STK_MSG_NULL                    ((stk_msg_t*)0)
 
 typedef struct stk_msg_t {
     /* message management - private for kernel */

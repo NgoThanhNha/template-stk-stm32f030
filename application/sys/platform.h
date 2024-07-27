@@ -22,7 +22,6 @@
 
 #if defined (RELEASE_EN)
     #define FATAL(str, id)          sys_ctrl_reset
-
 #else
     #define FATAL(str, id)          fatal_error(str, id)
 #endif

@@ -87,7 +87,6 @@ uint32_t sys_stack_get_size() {
 system_info_t system_info;
 
 void sys_ctrl_update_info() {
-
 	RCC_ClocksTypeDef RCC_Clocks;
 
 	RCC_GetClocksFreq(&RCC_Clocks);
@@ -124,7 +123,7 @@ void sys_ctrl_show_info() {
 * system utility functions
 *******************************************************************************/
 void sys_ctrl_delay_ms(volatile uint32_t count) {
-    volatile uint32_t current_ticks = SysTick->VAL;
+	volatile uint32_t current_ticks = SysTick->VAL;
 
 	/* number of ticks per millisecond */
 	const uint32_t tick_per_ms = SysTick->LOAD + 1;

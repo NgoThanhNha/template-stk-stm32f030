@@ -63,18 +63,18 @@ void reset_handler(void) {
     sys_cfg_console();
 
     volatile unsigned i, cnt;
-    
-	/* invoke all static constructors */
-	cnt = __preinit_array_end - __preinit_array_start;
-	for (i = 0; i < cnt; i++)
-		__preinit_array_start[i]();
 
-	cnt = __init_array_end - __init_array_start;
-	for (i = 0; i < cnt; i++)
-		__init_array_start[i]();
+    /* invoke all static constructors */
+    cnt = __preinit_array_end - __preinit_array_start;
+    for (i = 0; i < cnt; i++)
+        __preinit_array_start[i]();
+
+    cnt = __init_array_end - __init_array_start;
+    for (i = 0; i < cnt; i++)
+        __init_array_start[i]();
 
     /* usart1 init */
-	usart1_init(CONSOLE_BAUDRATE);
+    usart1_init(CONSOLE_BAUDRATE);
 
     /* io init */
     io_init();    
@@ -85,7 +85,7 @@ void reset_handler(void) {
 
     /* system update info */
     sys_ctrl_show_info();
-    
+
     /* go to the main application */
     main_app();
 }

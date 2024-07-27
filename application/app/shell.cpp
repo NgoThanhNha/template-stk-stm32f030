@@ -35,7 +35,7 @@ int32_t shell_dbg(uint8_t* argv) {
     case 'v':
         SHELL_LOG("Kernel version: %s\n", STK_VERSION);
         break;
-    
+
     case 'm':
         SHELL_LOG("Current millis: %d\n", sys_ctrl_millis());
         break;
@@ -57,15 +57,15 @@ int32_t shell_dbg(uint8_t* argv) {
 }
 
 int32_t shell_help(uint8_t* argv) {
-	uint32_t index = 0;
-	switch (*(argv + 4)) {
-	default:
+    uint32_t index = 0;
+    switch (*(argv + 4)) {
+    default:
         SHELL_LOG("\nCOMMANDS INFORMATION:\n\n");
         while(shell_table[index].cmd != (const int8_t*)0) {
             SHELL_LOG("%s\t-> %s\n\n", shell_table[index].cmd, shell_table[index].info);
             index++;
         }
         break;
-	}
-	return 0;
+    }
+    return 0;
 }

@@ -19,12 +19,12 @@
 #include "task.h"
 #include "message.h"
 
-#define TIMER_ERROR 					(0x00)
-#define TIMER_OK						(0x01)
-#define TIMER_TICK_SIG	 				(0x02)
+#define TIMER_ERROR					(0x00)
+#define TIMER_OK					(0x01)
+#define TIMER_TICK_SIG				(0x02)
 
-#define STK_TIMER_POOL_SIZE             (16)
-#define STK_TIMER_NULL 					((stk_timer_t*)0)
+#define STK_TIMER_POOL_SIZE			(16)
+#define STK_TIMER_NULL				((stk_timer_t*)0)
 
 typedef uint8_t timer_sig_t;
 

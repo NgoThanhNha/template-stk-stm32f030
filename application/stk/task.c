@@ -140,9 +140,7 @@ void task_polling_set_ability(task_id_t task_polling_id, uint8_t ability) {
 		if (__task_polling_table->id == task_polling_id) {
 
 			ENTRY_CRITICAL();
-
 			__task_polling_table->ability = ability;
-
 			EXIT_CRITICAL();
 
 			break;
